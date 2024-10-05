@@ -13,13 +13,13 @@ public:
             pre[i]=N;
             if(customers[i]=='N'){
                 N++;
-            }}
-            for(int i=n-1;i>=0;i--){
+            }
+            //for(int i=n-1;i>=0;i--){
 
-                if(customers[i]=='Y'){
+                if(customers[n-i]=='Y'){
                     Y++;
                 }
-                suf[i]=Y;
+                suf[n-i]=Y;
             }
             //ans 
             for(int i=0;i<n+1;i++){
