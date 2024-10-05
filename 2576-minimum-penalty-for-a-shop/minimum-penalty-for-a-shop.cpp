@@ -27,14 +27,14 @@ public:
                 pre[i]=pre[i]+suf[i];
                 min1=min(min1,pre[i]);
             }
-            int answer=0;
+            
             for(int i=0;i<n+1;i++){
                 if(pre[i]==min1){
-                    answer=i;
+                    return i;
                      break;
                 }
             }
-            return answer;
+            return 0;
         }
         
     
