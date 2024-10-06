@@ -4,7 +4,7 @@ public:
         int n=nums.size();
         vector<long long> cover(n);
         int max1=-10000;
-        vector<long long> pre(n);
+       // vector<long long> pre(n);
         for(int i=0;i<n;i++){
             
 
@@ -12,12 +12,12 @@ public:
             cover[i]=nums[i]+max1;
 
             }
-            pre[0]=cover[0];
+           // pre[0]=cover[0];
         for(int i=1;i<cover.size();i++){
-            pre[i]=pre[i-1]+cover[i];
+            cover[i]=cover[i-1]+cover[i];
         }  
 
-        return pre;  
+        return cover;  
         }
     
 };
