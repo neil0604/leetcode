@@ -3,7 +3,7 @@ public:
     vector<long long> findPrefixScore(vector<int>& nums) {
         int n=nums.size();
         vector<long long> cover(n);
-        int max1=-10000;
+        int max1=INT_MIN;
        // vector<long long> pre(n);
         for(int i=0;i<n;i++){
             
