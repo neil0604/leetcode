@@ -9,7 +9,7 @@ public:
             suf[i]=suf[i+1]+satisfaction[i];
         }
         int j=0;
-        while(j<n && suf[j]<0){
+        while(j<n&&suf[j]<0){
            // if(suf[i]>0)
            j++;
         }
