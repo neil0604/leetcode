@@ -10,7 +10,7 @@ public:
         }
         k = k % n;
         ListNode* temp = head;
-        for (int m = 0; m < n - k - 1; m++) {
+        for (int m = 1; m < n - k ; m++) {
             temp = temp->next;
         }
         tail->next = head;
