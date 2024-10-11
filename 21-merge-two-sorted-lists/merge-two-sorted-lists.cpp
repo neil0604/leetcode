@@ -37,7 +37,7 @@ public:
             temp->next=list2;
             list2=list2->next;
             temp=temp->next;
-        }
-        return head->next;
+        }head=head->next;
+        return head;
     }
 };
