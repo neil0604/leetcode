@@ -16,13 +16,13 @@ public:
         ListNode* head=temp;
         while(list1!=NULL && list2!=NULL){
             if(list1->val<list2->val){
-                ListNode* node=new ListNode(list1->val);
-                temp->next=node;
+              //  ListNode* node=new ListNode(list1->val);
+                temp->next=list1;
                 list1=list1->next;
             }
             else{
-                  ListNode* node=new ListNode(list2->val);
-                temp->next=node;
+              //    ListNode* node=new ListNode(list2->val);
+                temp->next=list2;
                 list2=list2->next;
             }
             temp=temp->next;
