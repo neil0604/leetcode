@@ -47,10 +47,15 @@ public:
         if(lists.size()==0) return NULL;
       //  if(n==1) return lists[0];
         while(lists.size()>1){
-        ListNode* a=lists[lists.size()-1];
-        lists.pop_back();
-        ListNode* b=lists[lists.size()-1];
-        lists.pop_back();
+      //  ListNode* a=lists[lists.size()-1];  <- done from end
+      ListNode* a=lists[0];
+       // lists.pop_back();  <- this is done from behind
+       // doing from start
+       lists.erase(lists.begin());
+      //  ListNode* b=lists[lists.size()-1];
+      ListNode* b=lists[0];
+       // lists.pop_back();
+       lists.erase(lists.begin());
         ListNode* c=merge(a,b);
         lists.push_back(c);
 
