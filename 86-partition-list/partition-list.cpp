@@ -10,14 +10,14 @@
  */
 class Solution {
 public:
-    ListNode* partition(ListNode* head, int x) {
+    ListNode* partition(ListNode* temp, int x) {
         ListNode* less=new ListNode(20);
         ListNode* less1=less;
         ListNode* more=new ListNode(10);
         ListNode* more1=more;
 
         
-    ListNode* temp=head;
+    //ListNode* temp=head;
 
         while(temp){
             if(temp->val<x){
