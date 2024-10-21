@@ -8,8 +8,9 @@ public:
            
             for(int i=0;i<13;i++){
                 while(a >= arr[i]){
-                 a=a-arr[i];
+                
                 ans=ans+ch[i];
+                 a=a-arr[i];
                
             }
             
