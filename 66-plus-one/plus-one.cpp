@@ -8,7 +8,7 @@ public:
             if(v[i] == 10){
                 v[i] = 0;
                 if(i != 0){
-                    v[i-1]++;
+                    v[i-1]=v[i-1]+1;
                 }
                 else{
                     v.push_back(0);
