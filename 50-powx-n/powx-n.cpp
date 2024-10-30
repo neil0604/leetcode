@@ -1,0 +1,29 @@
+class Solution {
+public:
+    double myPow(double x, int n) {
+       if (n == INT_MAX) return (x == 1) ? 1 : (x == -1) ? -1 : 0;
+        if (n == INT_MIN) return (x == 1 || x == -1) ? 1 : 0;
+       
+        bool flag=false;
+        long n1=n;
+        if(n<0){
+            flag=true;
+            n1=-n1;
+        }
+        double sum=1;
+        
+         if (x==1 ){
+             return sum;
+        }
+        if(x==-1){
+            if(n1%2==1) return -1;
+            else if(n1%2==0) return 1;
+        }
+        if(flag) x=1/x;
+        for(int i=0;i<n1;i++){
+            sum=sum*x;
+
+        }
+        return sum;
+    }
+};
