@@ -12,13 +12,7 @@ public:
         }
         double sum=1;
         
-         if (x==1 ){
-             return sum;
-        }
-        if(x==-1){
-            if(n1%2==1) return -1;
-            else if(n1%2==0) return 1;
-        }
+        
         if(flag) x=1/x;
         for(int i=0;i<n1;i++){
             sum=sum*x;
