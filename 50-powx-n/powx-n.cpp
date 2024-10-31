@@ -14,9 +14,9 @@ public:
         
         
         if(flag) x=1/x;
-        for(int i=0;i<n1;i++){
+        for(int i=0;i<n1;){
             sum=sum*x;
-
+            i++;
         }
         return sum;
     }
