@@ -9,12 +9,12 @@ public:
             
             str=str.substr(1);
             
-            char ch=s[i];
+            char ch=s[i++];
             str+=ch;
            // cout<<str<<endl;
             if(str==goal) return true;
             n--;
-            i++;
+           // i++;
 
 
         }
