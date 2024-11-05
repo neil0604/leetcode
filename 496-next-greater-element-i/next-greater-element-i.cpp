@@ -8,7 +8,7 @@ public:
             int j=0;
             while(nums1[i]!=nums2[j]){
                 j++;
-            }j++;
+            }j+=1;
             while(j<m){
                 if(nums1[i]<nums2[j]){
                     ans[i]=nums2[j];
