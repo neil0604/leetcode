@@ -1,16 +1,25 @@
 class Solution {
 public:
     string makeFancyString(string s) {
-        string ans;
-        int n = s.size();
+        int n=s.size();
+        string ans="";
+        bool flag=false;
+        for(int i=0;i<n;i++){
+            ans+=s[i];
+            int j=i+1;
+            while(s[i]==s[j]){
+                j++;
+                flag=true;
 
-        for (int i = 0; i < n; ++i) {
-            if (i >= 2 && s[i] == s[i - 1] && s[i - 1] == s[i - 2]) {
-                continue; // Skip if three consecutive characters are the same
             }
-            ans += s[i];
-        }
+            if(flag){ans+=s[i];
+            flag=false;
+            i=j-1;}
 
+
+        }
         return ans;
+        
+        
     }
 };
