@@ -1,7 +1,7 @@
 class Solution {
 public:
     int isPrefixOfWord(string s, string sw) {
-        s+=" ";
+       // s+=" ";
         stringstream ss(s);
         string temp;
         int n=sw.size();
