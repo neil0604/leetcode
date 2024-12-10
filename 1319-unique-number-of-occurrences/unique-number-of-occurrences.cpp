@@ -1,27 +1,20 @@
 class Solution {
 public:
     bool uniqueOccurrences(vector<int>& arr) {
-        sort(arr.begin(),arr.end());
-        vector<int> v;
-        for(int i=0;i<arr.size();i++){
 
-            int c=1;
-            while(i+1 < arr.size() && arr[i]==arr[i+1]){
-                c++;
-                i++;
-            }
-            v.push_back(c);
-        }
+        unordered_map<int , int> map;
+        int n=arr.size();
+        for(int i=0;i<n;i++){
 
-        sort(v.begin(),v.end());
-        for(int i=0;i<v.size();i++){
-            cout<<v[i]<<" ";
+            map[arr[i]]++;
         }
-        for(int i=0;i<v.size()-1;i++){
-            if(v[i]<v[i+1]){
-                continue;
-            }else return false;
+        unordered_set<int> st;
+        for(int i=0;i<n;i++){
+            st.insert(map[arr[i]]);
         }
-        return true;
+        return st.size()==map.size();
+
+
+        
     }
 };
