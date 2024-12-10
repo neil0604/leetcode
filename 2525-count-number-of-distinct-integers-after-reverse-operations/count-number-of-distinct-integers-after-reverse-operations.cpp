@@ -3,8 +3,8 @@ public:
     int reverse(int x){
         int p=0;
         while(x>0){
-            int d=x%10;
-            p=p*10+d;
+          //  int d=x%10;
+            p=p*10+x%10;
             x=x/10;
         }
         return p;
