@@ -15,11 +15,12 @@ public:
         for(int i=0;i<n;i++){
             int rev=reverse(nums[i]);
            st.insert(rev);
-        }
-        
-        for(int i=0;i<n;i++){
             st.insert(nums[i]);
         }
+        
+        // for(int i=0;i<n;i++){
+           
+        // }
         
         return st.size();
         
