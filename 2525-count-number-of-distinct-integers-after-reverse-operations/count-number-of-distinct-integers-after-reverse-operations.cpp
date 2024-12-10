@@ -10,13 +10,14 @@ public:
         return p;
     }
     int countDistinctIntegers(vector<int>& nums) {
+        unordered_set<int> st;
         int n=nums.size();
         for(int i=0;i<n;i++){
             int rev=reverse(nums[i]);
-            nums.push_back(rev);
+           st.insert(rev);
         }
-        unordered_set<int> st;
-        for(int i=0;i<nums.size();i++){
+        
+        for(int i=0;i<n;i++){
             st.insert(nums[i]);
         }
         
