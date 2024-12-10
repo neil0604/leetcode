@@ -9,8 +9,9 @@ public:
             map[arr[i]]++;
         }
         unordered_set<int> st;
-        for(int i=0;i<n;i++){
-            st.insert(map[arr[i]]);
+        for(auto p : map){
+           // int first=p.first;
+            st.insert(map[p.first]);
         }
         return st.size()==map.size();
 
