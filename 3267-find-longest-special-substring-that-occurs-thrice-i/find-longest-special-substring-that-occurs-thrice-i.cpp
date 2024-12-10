@@ -1,31 +1,33 @@
 class Solution {
 public:
-    int maximumLength(string s) {
-        int n = s.size();
-        int l = 1, r = n;
-
-        if (!helper(s, n, l)) return -1;
-
-        while (l + 1 < r) {
-            int mid = (l + r) / 2;
-            if (helper(s, n, mid)) l = mid;
-            else r = mid;
-        }
-
-        return l;
+    int max(int x, int y){
+        return (x>y)?x:y;
     }
-
-private:
-    bool helper(const string& s, int n, int x) {
-        vector<int> cnt(26, 0);
-        int p = 0;
-
-        for (int i = 0; i < n; i++) {
-            while (s[p] != s[i]) p++;
-            if (i - p + 1 >= x) cnt[s[i] - 'a']++;
-            if (cnt[s[i] - 'a'] > 2) return true;
+    int maximumLength(string s) {
+        int n = s.length();
+        map<string, int> mp;
+        for(int i=0; i<s.length(); i++){
+            for(int j=i; j<s.length(); j++){
+                string str;
+                for(int k = i; k<=j; k++){
+                    str.push_back(s[k]);
+                }
+                set<char> st;
+                for(int l=0; l<str.length(); l++){
+                    st.insert(str[l]);
+                }
+                if(st.size() == 1){
+                    mp[str]++;
+                }
+            }
         }
-
-        return false;
+        int maxi = -1;
+        for(auto it: mp){
+            cout<<it.first<<" "<<it.second<<" ";
+            if(it.second >= 3){
+                maxi = max(maxi, it.first.length());
+            }
+        }
+        return maxi;
     }
 };
