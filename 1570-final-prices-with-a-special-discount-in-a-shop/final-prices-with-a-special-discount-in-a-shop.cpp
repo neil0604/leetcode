@@ -9,11 +9,12 @@ public:
                 j++;
             }
            if(j==n) continue;
-           else v[i]=p[j];
+           else {
+            //v[i]=p[j];
+           p[i]=p[i]-p[j];
+           }
         }
-        for(int i=0;i<n;i++){
-            p[i]=p[i]-v[i];
-        }
+       
         return p;
         
     }
