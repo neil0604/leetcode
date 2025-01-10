@@ -17,7 +17,7 @@ public:
                     v[0]=mid;
                     break;
                 }
-              else  if(nums[mid-1]==target) hi=mid-1;
+                if(nums[mid-1]==target) hi=mid-1;
             else{
                 v[0]=mid;
                 break;
