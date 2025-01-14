@@ -1,16 +1,23 @@
 class Solution {
 public:
     vector<int> findThePrefixCommonArray(vector<int>& A, vector<int>& B) {
-        int n = A.size();
-        vector<int> freq(n + 1, 0);
-        vector<int> ans;
-        int common = 0;
-        
-        for (int i = 0; i < n; i++) {
-            if (++freq[A[i]] == 2) common++;
-            if (++freq[B[i]] == 2) common++;
-            ans.push_back(common);
+        int n=A.size();
+        vector<int> ans(n);
+        int i=0;
+        unordered_map<int,int> mp;
+       // mp[A[0]]++;
+        while(i<n){
+            int cnt=0;
+            mp[A[i]]++;
+            for( int a=0;a<=i;a++){
+                if(mp.find(B[a])!=mp.end()){
+                    cnt+=mp[B[a]];
+                }
+            }
+            ans[i]=cnt;
+i++;
+            }
+            return ans;
         }
-        return ans;
-    }
+    
 };
