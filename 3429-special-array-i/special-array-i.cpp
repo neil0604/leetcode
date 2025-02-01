@@ -1,17 +1,17 @@
 class Solution {
 public:
     bool isArraySpecial(vector<int>& nums) {
-        int i=0;
+       // int i=0;
         int j=1;
         int n=nums.size();
         while(j<n){
-            if(nums[j]%2==0 && nums[i]%2==1){
+            if(nums[j]%2==0 && nums[j-1]%2==1){
                 j++;
-            i++;
+           // i++;
                 continue;
-            }else if(nums[j]%2==1 && nums[i]%2==0){
+            }else if(nums[j]%2==1 && nums[j-1]%2==0){
                 j++;
-            i++;
+           // i++;
                 continue;
             }else return false;
             
