@@ -1,7 +1,7 @@
 class Solution {
 public:
     int partitionString(string s) {
-        unordered_map<int,int> mp;
+        unordered_set<int> mp;
         int cnt=1;
         int n=s.size();
         for(int i=0;i<n;i++){
@@ -12,7 +12,7 @@ public:
                 cnt++;
 
             }
-            mp[ch]=i;
+            mp.insert(ch);
 
         }
         return cnt;
