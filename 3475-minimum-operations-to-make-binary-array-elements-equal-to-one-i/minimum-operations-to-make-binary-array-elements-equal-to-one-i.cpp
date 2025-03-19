@@ -12,7 +12,7 @@ public:
                 count++;
             }
         }
-        
-        return (nums[n - 2] == 1 && nums[n - 1] == 1) ? count : -1;
+        for(auto it:nums)if(it==0)return -1;
+        return count;
     }
 };
