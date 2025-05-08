@@ -6,7 +6,7 @@ private:
 
         for(auto ele : graph[node]){
             if(!vis[ele]){
-                if(!dfs_of_directed_graph(vis,ele,graph,ans,pathvisited)){
+                if(dfs_of_directed_graph(vis,ele,graph,ans,pathvisited)==false){
                     ans[node] = -1; // Mark as unsafe
                     return false;
                 }
