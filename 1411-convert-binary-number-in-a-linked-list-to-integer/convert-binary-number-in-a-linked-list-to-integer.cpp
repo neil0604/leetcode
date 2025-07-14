@@ -10,30 +10,34 @@
  */
 class Solution {
 private:
-    ListNode* reverse(ListNode* head){
+    ListNode* reverse(ListNode* head,ListNode* &tail){
         if(head->next==NULL || head==NULL)  {
-           
+            tail=head;
          return head;
         }
-        ListNode* NewHead = reverse(head->next);
-        ListNode* temp = head->next;
+        ListNode* temp = reverse(head->next,tail);
         temp->next=head;
         head->next=NULL;
-        return NewHead;
+
+        temp=head;
+
+
+
+        return temp;
 
     }
 public:
     int getDecimalValue(ListNode* head) {
         if(head==NULL) return 0;
-    
-        ListNode* newHead = reverse(head);
+        ListNode* tail;
+        ListNode* newHead = reverse(head,tail);
         int i=0;
-        long sum=0;
-        while(newHead != NULL){
-            sum+=newHead->val*pow(2,i++);
-            newHead=newHead->next;
+        int sum=0;
+        while(tail!=NULL){
+            sum+=tail->val*pow(2,i++);
+           tail = tail->next;
         }
-        return (int)sum;
+        return sum;
         
     }
 };
