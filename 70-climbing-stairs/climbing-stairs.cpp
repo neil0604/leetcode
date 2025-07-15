@@ -1,13 +1,17 @@
 class Solution {
-int climbStairs1(int n,vector<int> &v) {
-        if(n==1) return 1;
-        if(n==2) return 2;
-        if(v[n]!=-1) return v[n];
-        return v[n] = climbStairs1(n-1,v) + climbStairs1(n-2,v);
+private:
+    int f(int n,vector<int> &vec){
+        if(n==1 || n==2) return n;
+
+        if(vec[n]!=-1) return vec[n];
+        else return vec[n] = f(n-1,vec) + f(n-2,vec);
     }
 public:
     int climbStairs(int n) {
-        vector<int> v(n+1,-1);
-      return climbStairs1(n,v);
+        vector<int> vec(n+1,-1);
+        f(n,vec);
+        if(n==1 || n==2) return n;
+        return vec[n];
+        
     }
 };
