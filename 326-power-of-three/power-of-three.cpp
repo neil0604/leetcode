@@ -1,18 +1,22 @@
 class Solution {
 public:
     bool isPowerOfThree(int n) {
-        long long num=3;
         if(n==1) return true;
-        if(n==0 || n <= -1) return false;
-        for(int i=0;i<100;i++){
-         if(num==n) return true;
-         cout<<num<<" ";
-         if(num > n) return false;
-         num  = 3 * num;
+        if(n<0) return false;
+        int low=1;
+        int high=n;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+          
+            if( pow(3,mid)==n) return true;
+            if( pow(3,mid)>n){
+                high=mid-1;
+            }
+            else if( pow(3,mid)<n){
+                low=mid+1;
+
+            }
         }
-
-
-
         return false;
     }
 };
