@@ -4,6 +4,7 @@ public:
         int n=arr.size();
         int low=0;
         int high=n-1;
+        if(arr.size()<=1) return arr[1];
         
         while(low<=high){
             int mid=low+(high-low)/2;
