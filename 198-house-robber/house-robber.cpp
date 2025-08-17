@@ -1,19 +1,19 @@
 class Solution {
-    
-public:
-
-    int f(vector<int> &nums,int i,vector<int> &dp){
-        if(nums.size()==1) return nums[0];
-        if(nums.size()==2) return max(nums[0],nums[1]);
-        if(nums.size() <= i) return 0;
-        if(dp[i]!=-1) return dp[i];
-        return dp[i] = max(f(nums,i+2,dp)+nums[i],f(nums,i+1,dp));
+private:
+    int f(int idx,vector<int> & nums,int N,vector<int> &dp){
+       if(idx==0) return nums[idx];
+       if(idx<0) return 0;
+        if(dp[idx]!=-1) return dp[idx];
+        int pick = nums[idx] ;
+        if(idx>1) pick+= f(idx-2,nums,N,dp);
+        int notpick = 0+f(idx-1,nums,N,dp);
+       return dp[idx]= max(pick,notpick);
     }
+public:
     int rob(vector<int>& nums) {
-        int i=0;
-        vector<int> dp(1006,-1);
-        if(nums.size()==0) return 0;
-        int res=f(nums,i,dp);
-        return res;
+        int n=nums.size()-1;
+        vector<int> dp(n+1,-1);
+         return  f(n,nums,nums.size(),dp);
+        
     }
 };
