@@ -18,7 +18,7 @@ public:
 
         for(auto ans : vis){
             if(ans==0) return false;
-            cout<<ans<<" ";
+           // cout<<ans<<" ";
         }
         return true;
     }
