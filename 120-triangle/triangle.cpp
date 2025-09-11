@@ -13,7 +13,7 @@ public:
                 if(i==0 && j==0) dp[0][0]=triangle[0][0];
                 else{
             int up=1e9,left=1e9;
-              if(j-i < 0)  up=triangle[i][j]+dp[i-1][j];
+              if(j < i)  up=triangle[i][j]+dp[i-1][j];
              if(j-1 >= 0)   left=triangle[i][j]+dp[i-1][j-1];
 
              dp[i][j]=min(up,left);
