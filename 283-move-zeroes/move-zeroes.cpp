@@ -4,7 +4,7 @@ public:
 int n=nums.size();
         int left=0,right=n-1;
         
-        if(n>1)
+        
         for( ;left<n;left++){
             if(nums[left]!=0) continue;
             int right=left+1;
