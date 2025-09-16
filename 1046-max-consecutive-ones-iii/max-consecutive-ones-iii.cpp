@@ -7,7 +7,7 @@ public:
         while(right<nums.size()){
             if(nums[right]==0) zero++;
             if(zero > k){
-                while(left<=right && zero > k){
+                while( zero > k){
                     if(nums[left]==0) zero--;
                     left++;
                 }
