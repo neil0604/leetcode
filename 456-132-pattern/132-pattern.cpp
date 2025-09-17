@@ -3,9 +3,7 @@ public:
     bool find132pattern(vector<int>& nums) {
         
         int n=nums.size();
-        if (nums.size() < 3) {
-            return false;
-        }
+        
         stack<pair<int,int>> st;
         vector<int> ans(n);
         int minPrev=nums[0];
