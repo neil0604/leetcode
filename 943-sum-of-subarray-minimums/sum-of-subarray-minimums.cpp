@@ -1,69 +1,47 @@
 class Solution {
-private:
-    void pse(vector<int> arr,vector<int>& res){
-        stack<pair<int,int>> st;
-        st.push({arr[0],0});
-        res[0]=-1;
-        int i=1;
-        int n=arr.size();
-        while(i<n){
-            while(st.size()!=0 && st.top().first >= arr[i]){
-                st.pop();
-            }
-            if(!st.empty()) res[i]=st.top().second;
-            else res[i]=-1;
-            st.push({arr[i],i});
-            i++;
-
-        }
-       
-    }
-        void nse(vector<int> arr,vector<int> &res){
-        stack<pair<int,int>> st;
-        int n=arr.size();
-        st.push({arr[n-1],n-1});
-        res[n-1]=-1;
-        int i=n-2;
-        
-        while(i>=0){
-            while(st.size()!=0 && st.top().first > arr[i]){
-                st.pop();
-            }
-            if(!st.empty()) res[i]=st.top().second;
-            else res[i]=-1;
-            st.push({arr[i],i});
-            i--;
-
-        }
-        
-    }
 public:
+long long mod=1e9+7;
     int sumSubarrayMins(vector<int>& arr) {
-        int n = arr.size();
-        //PREVIOUS-smaller
-        vector<int> res(n);
-        vector<int> res1(n);
+         int n=arr.size();
+       vector<long long> prev(n,1);
+      vector<long long>  next(n,1);
+     
+        //{element,index}
 
-        pse(arr,res);
-        nse(arr,res1);
-        
-int i=0;
-int ans=0;
-        while(i<n){
-            int pse =0;
-            int nse =0;
-            if(res[i]==-1) pse=i+1;
-            else pse = i-res[i];
+        stack<pair<int,int>> st;
+        st.push({arr[n-1],n-1});
+        //next greater
+        for(int i=n-2;i>=0;i--){
+            while(!st.empty() && st.top().first >= arr[i]) st.pop();
 
-            if(res1[i]==-1) nse=n-i;
-            else nse = res1[i]-i;
+            //operations
+           if(!st.empty()) next[i]=st.top().second-i;
+           else next[i]=n-i;
 
-            
-ans = (ans + (1LL * pse % 1000000007 * nse % 1000000007 % 1000000007 * arr[i] % 1000000007) % 1000000007) % 1000000007;
-            
-            i++;
+           //push the current array element
+           st.push({arr[i],i});
         }
+     
+        while (!st.empty())
+        st.pop();
+        st.push({arr[0],0});
+        //prev greater
+        for(int i=1;i<n;i++){
 
-        return ans;
+            while(!st.empty() && st.top().first > arr[i]) st.pop();
+
+            //operations
+           if(!st.empty()) prev[i]=i-st.top().second;
+           else prev[i]=i+1;
+
+           //push the current array element
+           st.push({arr[i],i});
+        }
+        long long total=0;
+        for(int i=0;i<n;i++){
+            total+=(prev[i]*next[i]*arr[i]) % mod;
+          //  cout<<prev[i]<<" "<<next[i]<<endl;
+        }
+        return total % mod;
     }
 };
