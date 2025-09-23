@@ -17,7 +17,7 @@ public:
         level+=1;
         if(root->left!=NULL) f(root->left,level,mpp);
         if(root->right!=NULL) f(root->right,level,mpp);
-        level--;
+       // level--;
 
 
     }
