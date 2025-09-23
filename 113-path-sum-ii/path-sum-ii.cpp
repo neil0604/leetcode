@@ -10,28 +10,33 @@
  * };
  */
 class Solution {
-public:
-    void helper(TreeNode* root,int target,vector<int> v,vector<vector<int>> &ans){
-        if(root==NULL) return ;
-         if(target==root->val && root->left==NULL && root->right==NULL) {
-            v.push_back(root->val);
-            ans.push_back(v);
+private:
+    void f(TreeNode* root,int sum,int target,vector<int> &ans,vector<vector<int>> & result){
+        if(root->left==NULL && root->right==NULL){
+          if(  sum+root->val==target) {
+            ans.push_back(root->val);
+            result.push_back(ans);
+            ans.pop_back();
             return ;
-         }
-       // if(target-root->val<0) return false;
-       v.push_back(root->val);
-        helper(root->left,target-root->val,v,ans);
-       
-       helper(root->right,target-root->val,v,ans);
-     
+          }
+         
+        }
+       // bool left=false,right=false;
+       ans.push_back(root->val);
+      if(root->left!=NULL)  f(root->left,sum+root->val,target,ans,result);
+      if(root->right!=NULL)  f(root->right,sum+root->val,target,ans,result);
+      ans.pop_back();
 
-     
-
+      
     }
+public:
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
-        vector<vector<int>> ans;
-        vector<int> v;
-        helper(root,targetSum,v,ans);
-        return ans;
+        
+        if(root==NULL) return {};
+        vector<int> ans;
+        vector<vector<int>> result;
+
+        f(root,0,targetSum,ans,result);
+        return result;
     }
 };
