@@ -11,24 +11,25 @@
  */
 class Solution {
 public:
-    int level(TreeNode* root){
-        if(root==NULL) return 0;
-        return 1+max(level(root->left),level(root->right));
-    }
-    void helper(TreeNode* root,int curr,int lev,vector<int> &v){
-        if(root==NULL) return;
-        if(curr==lev) {v[curr-1]=root->val;
-        return;}
-        helper(root->left,curr+1,lev,v);
-        helper(root->right,curr+1,lev,v);
+    void f(TreeNode* root,int level,map<int,int> & mpp){
+        
+        mpp[level]=root->val;
+        level+=1;
+        if(root->left!=NULL) f(root->left,level,mpp);
+        if(root->right!=NULL) f(root->right,level,mpp);
+        level--;
+
 
     }
+public:
     vector<int> rightSideView(TreeNode* root) {
-        int lev=level(root);
-vector<int> v(lev);
-        for(int i=1;i<=lev;i++){
-            helper(root,1,i,v);
+        map<int,int> mpp;
+        if(root==NULL) return {};
+        f(root,0,mpp);
+        vector<int> ans;
+        for(auto ele : mpp){
+            ans.push_back(ele.second);
         }
-        return v;
+        return ans;
     }
 };
