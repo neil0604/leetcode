@@ -1,25 +1,21 @@
-int dp[21][1001];
 class Solution {
-public:
-    int f(int j, int sum, vector<int>& nums){
-        if (j==0) return sum==0?1:0;
-        if (dp[j][sum]!=-1) return dp[j][sum];
-        int x=nums[j-1];
-        int ans=f(j-1, sum, nums);// without change sign 
-        if (sum>=x) // sign change
-            ans+=f(j-1, sum-x, nums);
-        return dp[j][sum]=ans;   
+private:
+    void helper(vector<int>& nums, int target,int idx, int sum,int & cnt){
+        // base case
+        if(idx==nums.size()){
+            if(sum==target) cnt++;
+            return;
+        }
+
+        // operations
+        helper(nums,target,idx+1,sum+nums[idx],cnt);
+        helper(nums,target,idx+1,sum-nums[idx],cnt);
     }
+public:
     int findTargetSumWays(vector<int>& nums, int target) {
-        const int n = nums.size();
-        int sum=accumulate(nums.begin(), nums.end(), 0);
-        int diff=sum-target;
+        int cnt=0;
+        helper(nums,target,0,0,cnt);
 
-        // Check if it's possible to achieve the target
-        if (diff<0|| diff%2!=0) return 0;
-
-        diff/=2;
-        memset(dp, -1, sizeof(dp));
-        return f(n, diff, nums);
+        return cnt;
     }
 };
